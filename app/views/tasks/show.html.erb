@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<H1>
+  <%= @task.title %>
+</H1>
+
+<div class='card task-description'>
+  <div class='card-body'>
+    <h4 class='card-title'>Description</h4>
+
+    <div class='card-status'>
+      <div class="badge badge-<%= @task.status.bootstrap_color %>">
+        <%= @task.status.name %>
+      </div>
+    </div>
+
+    <p class='card-text'>
+      <%= @task.description %>
+    </p>
+  </div>
+  <div class='card-controlls' data-toggle='tooltip' data-placement='bottom'
+    title='Edit'>
+    <% unless @task.parent.nil? %>
+      <%= link_to  fa_icon('arrow-up'), @task.parent %>
+    <% end %>
+    <%= link_to  fa_icon('edit'), edit_task_path(@task) %>
+  </div>
+</div>
+
+<div class='card-stack'>
+<% if task_children = get_task_children_stack %>
+  <% task_children.reverse.each.with_index do |t, idx| %>
+    <div class='card <%= 'stack-child-index' + idx.to_s %>'>
+      <div class='card-body'>
+        <h6 class='card-title'><%= link_to t.title, t %></h6>
+        <div class='card-text ellipsable'><%= t.description %></div>
+        <div class='card-status'>
+          <div class="badge badge-<%= t.status.bootstrap_color %>">
+            <%= t.status.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+<% end %>
+</div>
+<%= commentable_form @task %>

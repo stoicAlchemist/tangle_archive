@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<H1> <%= @domain.name %> Domain</H1>
+
+<div class='card'>
+  <div class='card-body'>
+    <h5 class='card-title'>Description:</h5>
+    <div class='card-text'>
+      <%= @domain.description %>
+    </div>
+    <% @domain.projects.each do |p| %>
+      <%= p.name %>
+    <% end %>
+  </div>
+</div>
+<%= link_to 'Edit', edit_domain_path(@domain) %> |
+<%= link_to 'Back', domains_path %>
+
+<%= commentable_form @domain %>
