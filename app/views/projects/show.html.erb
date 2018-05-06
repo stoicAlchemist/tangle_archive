@@ -1,19 +1,32 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @project.name %>
-</p>
+<H1> <%= @project.name %> </H1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @project.description %>
-</p>
+<div class='card-deck'>
+  <div class='card card-description'>
+    <div class='card-body'>
+      <h4 class='card-title'>
+        Description:
+      </h4>
+      <p class='card-text'>
+        <%= @project.description %>
+      </p>
+    </div>
+    <div class='card-controlls'>
+      <%= link_to fa_icon('edit'), edit_project_path(@project),
+        class: 'pull-right text-muted' %>
+    </div>
 
-<p>
-  <strong>Goal:</strong>
-  <%= @project.goal %>
-</p>
+  </div>
+  <div class='card border-primary card-goal'>
+    <h4 class='card-header'> Goal </h4>
+    <div class='card-body'>
+      <div class='card-text text-primary'>
+        <%= @project.goal %>
+      </div>
+    </div>
+  </div>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+</div>
+</br>
+<%= get_tasks_listing @project.tasks.select{|t|!t.status.done} %>

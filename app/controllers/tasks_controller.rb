@@ -4,7 +4,7 @@ class TasksController < ApplicationController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.order(priority: :desc).all.partition{|t| t.status.done}.last
+    @tasks = Task.where(project: nil).order(priority: :desc).all.partition{|t| t.status.done}.last
   end
 
   # GET /tasks/1

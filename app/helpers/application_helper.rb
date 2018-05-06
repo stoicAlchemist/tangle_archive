@@ -59,7 +59,7 @@ module ApplicationHelper
             <div class='update-date font-weight-light text-secondary'>
               #{c.updated_at}
             </div>
-            {c.content}
+            #{c.content}
           </td>
           <td>
             Actions (for later)
@@ -86,6 +86,50 @@ module ApplicationHelper
       </section>
       HTML
     form.html_safe
+  end
+
+  def get_tasks_listing tasks, options = {}
+    task_list = ''
+
+    tasks.each do |task|
+      task_list += <<-HTML
+        <div class='list-group-item list-group-item-action'>
+          <div class='row'>
+            <div class='col-1'>#{task.id}</div>
+            <div class='col-1'>
+              <div data-toggle'tooltip' data-placement='bottom'
+                title='#{task.effort.description}'>
+                 #{task.effort.name }
+              </div>
+            </div>
+            <div class='col-lg'> #{link_to task.title, task} </div>
+            <div class='col-lg ellipsable'> #{task.description} </div>
+            <div class='col-1'>
+              <div class='badge badge-#{task.status.bootstrap_color}'>
+                 #{task.status.name}
+              </div>
+            </div>
+            <div class='col-1'> #{get_priority_pill task.priority}  </div>
+          </div>
+        </div>
+        HTML
+    end
+    "
+    <div class='list-group'>
+        <div class='list-group-item list-group-item-dark'>
+          <div class='row'>
+            <div class='col-1'> Id       </div>
+            <div class='col-1'> Effort   </div>
+            <div class='col-lg'>Title    </div>
+            <div class='col-lg ellipsable'>Description</div>
+            <div class='col-1'> Status   </div>
+            <div class='col-1'> Priority </div>
+          </div>
+        </div>
+        #{task_list}
+    </div>
+
+    ".html_safe
   end
 
 end

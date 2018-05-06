@@ -5,22 +5,18 @@
 <table class='table'>
   <thead>
     <tr>
-      <th>Name</th>
+      <th>Icon</th>
+      <th class='col-2'>Name</th>
       <th>Description</th>
-      <th>Goal</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @projects.each do |project| %>
       <tr>
-        <td><%= project.name %></td>
-        <td><%= project.description %></td>
-        <td><%= project.goal %></td>
-        <td><%= link_to 'Show', project %></td>
-        <td><%= link_to 'Edit', edit_project_path(project) %></td>
-        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= fa_icon 'fas-' + project.icon %></td>
+        <td><%= link_to project.name, project %></td>
+        <td><div class='ellipsable'><%= project.description %></div></td>
       </tr>
     <% end %>
   </tbody>

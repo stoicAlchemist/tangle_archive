@@ -7,5 +7,7 @@ class Task < ApplicationRecord
 
   has_many :comments, as: :commentable
 
+  default_scope { order(priority: :desc) }
+
   validates :title, presence: true
 end

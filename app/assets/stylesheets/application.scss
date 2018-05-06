@@ -18,6 +18,7 @@
 @import "bootstrap";
 @import "font-awesome";
 @import "tasks"; // Import all style sheets on this directory
+@import "projects";
 
 body {
   @include padding(5em 5em);
@@ -41,9 +42,9 @@ body {
 }
 
 .card-controlls {
-  @include position(absolute, null 0 0 null );
+  @include position(relative, null 0 0 null );
   @include padding(0 .5em .3em 0  );
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 
 .card-stack {
@@ -75,3 +76,9 @@ body {
 .comment-stack {
   @include padding(5em null null null);
 }
+
+.card-description {
+  max-width: 35em;
+  min-height: 10em;
+}
+

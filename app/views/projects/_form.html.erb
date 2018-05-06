@@ -13,17 +13,25 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :project_name %>
+    <%= form.text_field :name, id: :project_name, class: 'form-control' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :icon %>
+    <%= form.select :icon,
+      options_for_select(fa_icons), {id: :project_icon, prompt: true},
+      class: 'custom-select' %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
-    <%= form.text_area :description, id: :project_description %>
+    <%= form.text_area :description, id: :project_description,
+      class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :goal %>
-    <%= form.text_area :goal, id: :project_goal %>
+    <%= form.text_area :goal, id: :project_goal, class: 'form-control' %>
   </div>
 
   <div class='field'>
