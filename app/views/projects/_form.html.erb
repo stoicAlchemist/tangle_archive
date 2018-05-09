@@ -1,0 +1,52 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :project_name, class: 'form-control' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :icon %>
+    <%= form.select :icon,
+      options_for_select(fa_icons), {id: :project_icon, prompt: true},
+      class: 'custom-select' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :project_description,
+      class: 'form-control' %>
+  </div>
+
+  <div class="field">
+    <%= form.label :goal %>
+    <%= form.text_area :goal, id: :project_goal, class: 'form-control' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :project_type %>
+    <%= form.collection_select :project_type_id, ProjectType.all, :id, :name,
+      {id: :project_project_type, prompt: true}, class: 'custom-select' %>
+  </div>
+
+  <div class='field'>
+    <%= form.label :domain %>
+    <%= form.collection_select :domain_id, Domain.all, :id, :name,
+      {id: :project_domain, prompt: true}, class: 'custom-select' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
