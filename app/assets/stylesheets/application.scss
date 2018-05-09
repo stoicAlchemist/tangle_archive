@@ -48,15 +48,14 @@ body {
 
 .card-stack {
   @include padding(1em);
-  max-width: 23em;
+  max-width: 36em;
   height: 10em;
 
   @for $i from 0 to 3 {
     .stack-child-index#{$i} {
-      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      max-width: 20em;
-      min-height: 8em;
-      @include position(relative, $i*-6.9em null null $i*.4em);
+      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      min-height: 10em;
+      @include position(relative, $i*-8.9em null null $i*.4em);
       background: white;
       transition: transform 300ms ease-in-out;
     }
@@ -65,7 +64,7 @@ body {
 
 @for $i from 0 to 3 {
   .card-stack:hover .stack-child-index#{$i} {
-    transform: translate($i*4em, $i*4em);
+    transform: translate($i*2em, $i*2em);
   }
 }
 
@@ -77,8 +76,9 @@ body {
 }
 
 .card-description {
-  max-width: 35em;
+  max-width: 34em;
   min-height: 10em;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .fa {
