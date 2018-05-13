@@ -52,8 +52,12 @@ module ApplicationHelper
     commentable.comments.each do |c|
       table += <<-HTML
         <tr scope='row'>
-          <td class='col-1'>
-            Username (For later)
+          <td class='col-1 comment-user-info'>
+            #{link_to fa_icon('user', class: 'user-icon'), c.creator,
+            class: 'text-muted'}
+            <div class='bottom-username text-muted'>
+              #{c.creator.username}
+            </div>
           </td>
           <td>
             <div class='update-date font-weight-light text-secondary'>

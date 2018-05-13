@@ -7,6 +7,10 @@
   <% end %>
   <%= @task.title %>
 </H1>
+<div class='bottom-username'>
+  Created by: <%= link_to @task.creator.username, @task.creator,
+    class: 'text-muted' %>
+</div>
 
 <% unless @task.parent.nil? %>
   <div class='card-stack'>
