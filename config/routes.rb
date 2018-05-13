@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   resources :project_types
   resources :comments # This needs to be first so the others can use it
 
