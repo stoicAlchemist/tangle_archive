@@ -5,17 +5,19 @@ module ApplicationHelper
     # Get a list of routes
 
     [
-      {controller: 'Tasks',    name: 'Tasks',    path: tasks_path},
-      {controller: 'Statuses', name: 'Statuses', path: statuses_path},
-      {controller: 'Efforts',  name: 'Efforts',  path: efforts_path},
-      {controller: 'Projects',  name: 'Projects',  path: projects_path},
-      {controller: 'Comments',  name: 'Comments',  path: comments_path},
-      {controller: 'Domains',  name: 'Domains',  path: domains_path}
+      {controller: 'Tasks',    name: 'Tasks',    path: tasks_path    } ,
+      {controller: 'Statuses', name: 'Statuses', path: statuses_path } ,
+      {controller: 'Efforts',  name: 'Efforts',  path: efforts_path  } ,
+      {controller: 'Projects', name: 'Projects', path: projects_path } ,
+      {controller: 'Comments', name: 'Comments', path: comments_path } ,
+      {controller: 'Domains',  name: 'Domains',  path: domains_path  } ,
+      {controller: 'People',   name: 'People',   path: people_path   } ,
+      {controller: 'Users',    name: 'Users',    path: users_path    }
     ]
   end
 
   # Generate the menu contents based on the arguments given
-  def ul_linked_boostrap_menu args
+  def ul_linked_bootstrap_menu args
 
     menu  = ''
     args[:items].each do |a|

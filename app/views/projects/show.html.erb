@@ -1,11 +1,8 @@
-<% unless notice.nil? %>
-<p id="notice" class='alert alert-primary' role='alert'>
-  <%= notice %>
-  <span aria-hidden="true">&times;</span>
-</p>
-<% end %>
 
 <H1> <%= @project.name %> </H1>
+<div class='bottom-username'>
+  Created by: <%= link_to @project.creator.username, @project.creator, class: 'text-muted' %>
+</div>
 
 <div class='card-deck'>
   <div class='card card-description'>
