@@ -43,11 +43,11 @@
       aria-selected="true">Focusing on</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" id="new-tab" data-toggle="tab"
-      href="#new" role="tab" aria-controls="new" aria-selected="false">
-      New tasks
+    <a class="nav-link" id="inbox-tab" data-toggle="tab"
+      href="#inbox" role="tab" aria-controls="inbox" aria-selected="false">
+      Inbox
       <span class="badge badge-pill badge-primary">
-        <%= @project.tasks.select {|t|!t.status.done and t.status.name == 'New'}.count%>
+        <%= @project.tasks.select {|t|!t.status.done and t.status.name == 'Inbox'}.count%>
       </span>
     </a>
   </li>
@@ -61,12 +61,12 @@
   <div class="tab-pane fade show active" id="current" role="tabpanel"
     aria-labelledby="current-tab">
     </br>
-    <%= get_tasks_listing @project.tasks.select{|t|!t.status.done and t.status.name != 'New'} %>
+    <%= get_tasks_listing @project.tasks.select{|t|!t.status.done and t.status.name != 'Inbox'} %>
   </div>
-  <div class="tab-pane fade" id="new" role="tabpanel"
+  <div class="tab-pane fade" id="inbox" role="tabpanel"
     aria-labelledby="profile-tab">
     </br>
-    <%= get_tasks_listing @project.tasks.select{|t|!t.status.done and t.status.name == 'New'} %>
+    <%= get_tasks_listing @project.tasks.select{|t|!t.status.done and t.status.name == 'Inbox'} %>
   </div>
   <div class="tab-pane fade" id="contact" role="tabpanel"
     aria-labelledby="contact-tab">
