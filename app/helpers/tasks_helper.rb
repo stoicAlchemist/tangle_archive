@@ -20,11 +20,11 @@ module TasksHelper
     @task = Task.new
     modal = <<-HTML
       <div class="modal fade" id="newTaskModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+        aria-labelledby="newTask" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <h5 class="modal-title" id="newTask">Add a task</h5>
               <button type="button" class="close" data-dismiss="modal"
                 aria-label="Close">
                 <span aria-hidden="true">&times;</span>
@@ -36,10 +36,14 @@ module TasksHelper
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-dismiss="modal">
                 Close
-                </button>
+              </button>
 
+              <button type='submit' class='btn btn-primary' name='refresh'
+                form='task_form'>
+                Save and Close
+              </button>
               <button type="submit" form='task_form'class="btn btn-primary">
-                Save changes
+                Save and Go
               </button>
             </div>
           </div>

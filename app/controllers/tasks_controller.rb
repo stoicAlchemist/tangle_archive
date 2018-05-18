@@ -29,7 +29,13 @@ class TasksController < ApplicationController
 
     respond_to do |format|
       if @task.save
-        format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        unless params[:refresh].nil?
+          format.html do
+            redirect_to @task.project, notice: 'Task was successfully created.'
+          end
+        else
+          format.html { redirect_to @task, notice: 'Task was successfully created.' }
+        end
         format.json { render :show, status: :created, location: @task }
       else
         format.html { render :new }
@@ -42,8 +48,13 @@ class TasksController < ApplicationController
   # PATCH/PUT /tasks/1.json
   def update
     respond_to do |format|
+
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: 'Task was successfully updated.' }
+        r = (@task.previous_changes.keys.include? 'status_id' and @task.status.done?) ? @task.project : @task
+        format.html do
+          redirect_to r,
+            notice: 'Task was successfully updated.' 
+        end
         format.json { render :show, status: :ok, location: @task }
       else
         format.html { render :edit }
