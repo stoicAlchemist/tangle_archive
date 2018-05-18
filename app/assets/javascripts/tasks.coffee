@@ -13,3 +13,8 @@ document.addEventListener 'turbolinks:load', ->
 
   click b for b in buttons
 
+  pl = document.getElementById 'priority_label'
+  document.getElementById('task_priority').addEventListener 'change', ->
+    pl.innerHTML = 'Priority ' + this.value
+
+

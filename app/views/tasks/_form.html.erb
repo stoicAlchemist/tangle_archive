@@ -24,7 +24,7 @@
 
   <div class='row'>
     <div class="form-group col">
-      <%= form.label :priority %>
+      <%= form.label :priority, id: 'priority_label' %>
       <%= form.range_field :priority, id: :task_priority, min: 0, max: 9,
         class: 'form-control form-control-range' %>
     </div>
