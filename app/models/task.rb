@@ -4,6 +4,7 @@ class Task < ApplicationRecord
   belongs_to :project, optional: true
   belongs_to :creator, class_name: 'User'
 
+  # Tasks can have parent tasks
   belongs_to :parent, class_name: 'Task', optional: true
 
   has_many :comments, as: :commentable

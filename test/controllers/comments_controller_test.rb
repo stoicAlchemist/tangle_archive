@@ -2,40 +2,39 @@ require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
   setup do
+    # Setup all commentable
     @comment = comments(:one)
+    @task    = tasks(:one)
+    @domain  = domains(:one)
+    @project = projects(:one)
   end
 
-  test "should get index" do
-    get comments_url
-    assert_response :success
-  end
-
-  test "should get new" do
-    get new_comment_url
-    assert_response :success
-  end
-
-  test "should create comment" do
+  test "should create a task comment" do
     assert_difference('Comment.count') do
-      post comments_url, params: { comment: { content: @comment.content, flagged: @comment.flagged, hidden: @comment.hidden } }
+      post task_comments_url(@task.id), params: {
+        comment: {
+          content: @comment.content,
+          flagged: @comment.flagged,
+          hidden:  @comment.hidden,
+          creator_id: @comment.creator.id
+        }
+      }
     end
 
-    assert_redirected_to comment_url(Comment.last)
+    assert_redirected_to task_url(@task)
   end
 
-  test "should show comment" do
-    get comment_url(@comment)
-    assert_response :success
-  end
+  test "should update task comment" do
 
-  test "should get edit" do
-    get edit_comment_url(@comment)
-    assert_response :success
-  end
-
-  test "should update comment" do
-    patch comment_url(@comment), params: { comment: { content: @comment.content, flagged: @comment.flagged, hidden: @comment.hidden } }
-    assert_redirected_to comment_url(@comment)
+    patch task_comment_url(@task, @comment), params: {
+      comment: {
+        content: @comment.content,
+        flagged: @comment.flagged,
+        hidden: @comment.hidden,
+        commentable_id: @comment.commentable_id
+      }
+    }
+    assert_redirected_to task_url(@task)
   end
 
   test "should destroy comment" do

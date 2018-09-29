@@ -34,10 +34,11 @@ class TasksController < ApplicationController
             redirect_to @task.project, notice: 'Task was successfully created.'
           end
         else
-          format.html { redirect_to @task, notice: 'Task was successfully created.' }
+          format.html{redirect_to @task, notice: 'Task was successfully created.'}
         end
         format.json { render :show, status: :created, location: @task }
       else
+        pp @task.errors
         format.html { render :new }
         format.json { render json: @task.errors, status: :unprocessable_entity }
       end
@@ -89,7 +90,9 @@ class TasksController < ApplicationController
       :status_id,
       :effort_id,
       :project_id,
-      :parent_id
+      :parent_id,
+      :creator_id
     )
   end
 end
+

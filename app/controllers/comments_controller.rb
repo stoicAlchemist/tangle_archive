@@ -1,26 +1,6 @@
 class CommentsController < ApplicationController
+  before_action :set_commentable
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :detect_commentable, only: :create
-
-  # GET /comments
-  # GET /comments.json
-  def index
-    @comments = Comment.all
-  end
-
-  # GET /comments/1
-  # GET /comments/1.json
-  def show
-  end
-
-  # GET /comments/new
-  def new
-    @comment = Comment.new
-  end
-
-  # GET /comments/1/edit
-  def edit
-  end
 
   # POST /comments
   # POST /comments.json
@@ -43,9 +23,11 @@ class CommentsController < ApplicationController
   def update
     respond_to do |format|
       if @comment.update(comment_params)
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { render :show, status: :ok, location: @comment }
+        format.html { redirect_to @commentable, notice: 'Comment was successfully updated.' }
+        format.json { render :show, status: :ok, location: @commentable }
       else
+        pp @comment.errors
+        pp @comment
         format.html { render :edit }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
       end
@@ -66,9 +48,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+      @comment.commentable = @commentable
     end
 
-    def detect_commentable
+    def set_commentable
       resource, id = request.path.split('/')[1, 2]
       @commentable = resource.singularize.classify.constantize.find(id)
     end
@@ -78,7 +61,8 @@ class CommentsController < ApplicationController
       params.require(:comment).permit(
         :content,
         :hidden,
-        :flagged
+        :flagged,
+        :creator_id
       )
     end
 end

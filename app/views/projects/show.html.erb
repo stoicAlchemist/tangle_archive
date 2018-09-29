@@ -19,10 +19,10 @@
         data-target='#newTaskModal'>
         Add a Task
       </button>
-      <%= new_task_modal project: @project %>
       <%= link_to fa_icon('edit'), edit_project_path(@project),
         class: 'pull-right text-muted' %>
     </div>
+    <%= new_task_modal project: @project.id %>
 
   </div>
   <div class='card border-primary card-goal'>

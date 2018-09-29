@@ -17,7 +17,13 @@ class DomainsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create domain" do
     assert_difference('Domain.count') do
-      post domains_url, params: { domain: { description: @domain.description, name: @domain.name } }
+      post domains_url, params: {
+        domain: {
+          description: @domain.description,
+          name: @domain.name,
+          creator_id: @domain.creator.id
+        }
+      }
     end
 
     assert_redirected_to domain_url(Domain.last)

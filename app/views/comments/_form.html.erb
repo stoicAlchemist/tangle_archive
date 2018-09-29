@@ -1,6 +1,6 @@
-<%= form_with model: [commentable, @comment],
+<%= form_with model: [@commentable, @comment],
   local: true,
-  url: [commentable, @comment], id: 'comment_form' do |form| %>
+  url: [@commentable, @comment], id: 'comment_form' do |form| %>
 
   <% if @comment.errors.any? %>
     <div id="error_explanation">

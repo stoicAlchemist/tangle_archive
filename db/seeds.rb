@@ -41,3 +41,15 @@ Project.create([
     domain_id: 1
   }
 ])
+User.create([
+  {
+    username: 'anonymous',
+    email: 'nobody@example.com',
+    password_digest: 'stub'
+  },
+  {
+    username: 'admintangle',
+    email: 'tangle@example.com',
+    secret: 'stub'
+  }
+])
