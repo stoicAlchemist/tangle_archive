@@ -1,0 +1,35 @@
+<h1>Statuses</h1>
+
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Termination</th>
+      <th>Color</th>
+      <th colspan="3">Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @statuses.each do |status| %>
+      <tr>
+        <td><%= status.name %></td>
+        <td><%= status.description %></td>
+        <td><%= status.done %></td>
+        <td>
+          <div class='badge badge-<%= status.bootstrap_color %>'>
+            <%= status.bootstrap_color %>
+          </div>
+        </td>
+        <td><%= link_to 'Show', status %></td>
+        <td><%= link_to 'Edit', edit_status_path(status) %></td>
+        <td><%= link_to 'Destroy', status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Status', new_status_path %>

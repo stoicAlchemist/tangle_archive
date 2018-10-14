@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  creator: user1
+  content: 'MyText'
+  hidden: false
+  flagged: false
+
+two:
+  creator: user1
+  content: 'MyText'
+  hidden: false
+  flagged: false

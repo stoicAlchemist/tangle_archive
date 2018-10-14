@@ -1,0 +1,12 @@
+<p>
+  <strong>Name:</strong>
+  <%= @effort.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @effort.description %>
+</p>
+
+<%= link_to 'Edit', edit_effort_path(@effort) %> |
+<%= link_to 'Back', efforts_path %>

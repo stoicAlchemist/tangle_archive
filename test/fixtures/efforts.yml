@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+no_effort:
+  name: NoEffort
+  description: NoDescription
+
+one:
+  name: MyString
+  description: MyText
+
+two:
+  name: MyString
+  description: MyText

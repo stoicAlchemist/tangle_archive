@@ -1,0 +1,17 @@
+<p>
+  <strong>Content:</strong>
+  <%= @comment.content %>
+</p>
+
+<p>
+  <strong>Hidden:</strong>
+  <%= @comment.hidden %>
+</p>
+
+<p>
+  <strong>Flagged:</strong>
+  <%= @comment.flagged %>
+</p>
+
+<%= link_to 'Edit', edit_comment_path(@comment) %> |
+<%= link_to 'Back', comments_path %>
