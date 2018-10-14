@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+anonymous:
+  username: anonymous
+  email: stub@example.com
+  password_digest: stubPassword
+
+user1:
+  username: user1
+  email: email@example.com
+  password_digest: <%= BCrypt::Password.create(TEST_PASSWORD) %>
+
+user2:
+  username: user2
+  email: email@example.com
+  password_digest: <%= BCrypt::Password.create(TEST_PASSWORD) %>
+

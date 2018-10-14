@@ -1,0 +1,84 @@
+<% content_for :javascript_includes do %>
+  include javascript, it's all loaded on the application.js file
+<% end %>
+<H1>
+
+  <% unless @task.project.nil? %>
+    <%= link_to  @task.project.name, @task.project, class: 'text-muted' %> /
+  <% end %>
+  <%= @task.title %>
+</H1>
+<div class='bottom-username'>
+  Created by: <%= link_to @task.creator.username, @task.creator,
+    class: 'text-muted' %>
+</div>
+
+<% unless @task.parent.nil? %>
+  <div class='card-stack'>
+    <div class='card card-description stack-child-index0'>
+      <div class='card-body'>
+        <h4 class='card-title'>
+          <%= link_to @task.parent.title, @task.parent, class: 'text-muted' %>
+        </h4>
+        <div class='card-text'>
+          <%= @task.parent.description %>
+        </div>
+      </div>
+    </div>
+<% end %>
+
+<div class='card card-description stack-child-index1'>
+  <div class='card-body'>
+    <h4 class='card-title'>Description</h4>
+
+    <div class='card-status btn-group btn-group-sm' role='group'>
+      <button class="btn dropdown-toggle btn-sm btn-<%= @task.status.bootstrap_color %>"
+        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id='StatusToggle'>
+        <%= @task.status.name %>
+      </button>
+      <div class="dropdown-menu" aria-labelledby='StatusToggle'>
+        <% Status.all.each do |s| %>
+          <% next if s == @task.status %>
+          <button class="dropdown-item new-status btn-sm" data-toggle='modal'
+                  data-target="#statusChangeModal" value='<%= s.id%>'
+                  data-bootstrap='<%= s.bootstrap_color %>'>
+            <%= s.name %>
+          </button>
+        <% end %>
+      </div>
+    </div>
+    <%= render 'shared/statusChangeModal', statusable: @task %>
+
+    <p class='card-text'>
+      <%= @task.description %>
+    </p>
+  </div>
+
+  <div class='card-controlls badge-primary pull-right' title='Edit'>
+    <%= link_to  fa_icon('edit'), edit_task_path(@task), class: 'pull-right' %>
+    <%= link_to  '+', edit_task_path(@task), class: 'badge-inverse',
+      data: {toggle: 'modal', target: '#newTaskModal'} %>
+  </div>
+  <%= new_task_modal project: @task.project_id, parent: @task %>
+
+</div>
+<% unless @task.parent.nil? %> </div> <% end %>
+
+<div class='card-stack'>
+<% if task_children = get_task_children_stack %>
+  <% task_children.reverse.each.with_index do |t, idx| %>
+    <div class='card <%= 'stack-child-index' + idx.to_s %>'>
+      <div class='card-body'>
+        <h6 class='card-title'><%= link_to t.title, t, class: 'text-muted'%></h6>
+        <div class='card-text ellipsable'><%= t.description %></div>
+        <div class='card-status'>
+          <div class="badge badge-<%= t.status.bootstrap_color %>">
+            <%= t.status.name %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <%end%>
+<% end %>
+</div>
+<%= commentable_form @task %>

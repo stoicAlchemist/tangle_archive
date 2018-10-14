@@ -1,0 +1,16 @@
+<div class='card-stack-body'>
+  <H1>Hustle</H1>
+  <div class='card-columns'>
+    <% @projects.each do |p| %>
+      <div class='card'>
+        <%= image_tag 'autumn-autumn-colours-branches-784185.jpg',
+          class: 'card-img-top'%>
+        <div class="card-body">
+          <%= link_to tag.h5(p.name, class: 'card-title'), p %>
+          <%= tag.p p.description,   class: 'card-text' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+

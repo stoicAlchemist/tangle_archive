@@ -1,0 +1,65 @@
+<%= form_with(model: task, local: true, id: 'task_form') do |form| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from
+        being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :title %>
+    <%= form.text_field :title, id: :task_title, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, id: :task_description, class: 'form-control' %>
+  </div>
+
+  <div class='row'>
+    <div class="form-group col">
+      <%= form.label :"priority #{task.priority}", id: 'priority_label' %>
+      <%= form.range_field :priority, id: :task_priority, min: 0, max: 9,
+        class: 'form-control form-control-range' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :status %>
+      <%= form.collection_select :status_id, Status.all, :id, :name,
+        {id: :task_status}, class: 'custom-select' %>
+    </div>
+
+    <div class="form-group col">
+      <%= form.label :effort %>
+      <%= form.collection_select :effort_id, Effort.all, :id, :name,
+        {id: :task_effort}, class: 'custom-select'%>
+    </div>
+
+
+  </div>
+  <% if local_assigns.fetch(:parent, nil).nil? %>
+    <%= form.label :parent %>
+    <% parent = nil %>
+  <% else %>
+    <% parent = parent.id %>
+  <% end %>
+
+  <%= form.hidden_field :parent_id, id: :task_parent, value: parent  %>
+
+  <% if controller.controller_name.include?('tasks') and
+      local_assigns.fetch(:parent, nil).nil? %>
+    <div class="actions">
+      <%= form.submit class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+
+  <% unless local_assigns.fetch(:project, nil).nil? %>
+    <%= form.hidden_field :project_id, id: :task_project, value: project%>
+  <% end %>
+<% end %>

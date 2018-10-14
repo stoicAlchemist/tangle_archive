@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  effort: one
+  status: one
+  creator: user1
+  project: one
+  priority: 0
+
+two:
+  title: MyString
+  description: MyText
+  effort: two
+  status: two
+  creator: user1
+  project: two
+  priority: 0
