@@ -7,6 +7,19 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     @task    = tasks(:one)
     @domain  = domains(:one)
     @project = projects(:one)
+    @user    = users(:user1)
+
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: TEST_PASSWORD
+      }
+    }
+
+  end
+
+  def teardown
+    delete logout_path
   end
 
   test "should create a task comment" do

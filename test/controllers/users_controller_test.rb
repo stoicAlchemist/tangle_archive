@@ -3,6 +3,18 @@ require 'test_helper'
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
     @user = users(:user1)
+
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: TEST_PASSWORD
+      }
+    }
+
+  end
+
+  def teardown
+    delete logout_path
   end
 
   test "should get index" do
@@ -21,7 +33,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         user: {
           email:    @user.email,
           username: @user.username,
-          password_digest: @user.password_digest
+          password: TEST_PASSWORD
         }
       }
     end
@@ -44,7 +56,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
       user: {
         email: @user.email,
         username: @user.username,
-        password_digest: @user.password_digest
+        password: TEST_PASSWORD
       }
     }
     assert_redirected_to user_url(@user)
