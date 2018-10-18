@@ -3,6 +3,19 @@ require 'test_helper'
 class EffortsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @effort = efforts(:one)
+    @user    = users(:user1)
+
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: TEST_PASSWORD
+      }
+    }
+
+  end
+
+  def teardown
+    delete logout_path
   end
 
   test "should get index" do

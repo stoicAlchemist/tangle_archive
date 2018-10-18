@@ -3,7 +3,7 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   test "valid user" do
-    user = User.new(username: 'usr', email: 'usr@xmpl.com', password_digest: 'secret')
+    user = User.new(username: 'usr', email: 'usr@xmpl.com', password: 'secret')
     assert user.valid?
   end
 

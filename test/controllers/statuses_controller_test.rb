@@ -3,6 +3,19 @@ require 'test_helper'
 class StatusesControllerTest < ActionDispatch::IntegrationTest
   setup do
     @status = statuses(:one)
+    @user = users(:user1)
+
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: TEST_PASSWORD
+      }
+    }
+
+  end
+
+  def teardown
+    delete logout_path
   end
 
   test "should get index" do
