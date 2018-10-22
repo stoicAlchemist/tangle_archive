@@ -85,13 +85,6 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
-<<<<<<< HEAD
-    erubi (1.7.1)
-    execjs (2.7.0)
-    ffi (1.9.25)
-    font-awesome-rails (4.7.0.4)
-      railties (>= 3.2, < 6.0)
-=======
     cucumber (3.1.2)
       builder (>= 2.1.2)
       cucumber-core (~> 3.2.0)
@@ -127,7 +120,6 @@ GEM
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
     gherkin (5.1.0)
->>>>>>> gitlab/master
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.1.0)
@@ -151,21 +143,15 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
-<<<<<<< HEAD
-=======
     mime-types (3.2.2)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2018.0812)
->>>>>>> gitlab/master
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
-<<<<<<< HEAD
-=======
     multi_test (0.1.2)
->>>>>>> gitlab/master
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -267,12 +253,9 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
-<<<<<<< HEAD
-=======
   cucumber-rails
   database_cleaner
   factory_bot_rails
->>>>>>> gitlab/master
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -280,10 +263,7 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.2.1)
-<<<<<<< HEAD
-=======
   rails-controller-testing
->>>>>>> gitlab/master
   sass-rails (~> 5.0)
   selenium-webdriver
   shoulda-matchers!
