@@ -3,6 +3,19 @@ require 'test_helper'
 class PeopleControllerTest < ActionDispatch::IntegrationTest
   setup do
     @person = people(:one)
+    @user    = users(:user1)
+
+    post login_path, params: {
+      session: {
+        email: @user.email,
+        password: TEST_PASSWORD
+      }
+    }
+
+  end
+
+  def teardown
+    delete logout_path
   end
 
   test "should get index" do

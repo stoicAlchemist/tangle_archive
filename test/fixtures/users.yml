@@ -8,10 +8,10 @@ anonymous:
 user1:
   username: user1
   email: email@example.com
-  password_digest: my_secret
+  password_digest: <%= BCrypt::Password.create(TEST_PASSWORD) %>
 
 user2:
   username: user2
   email: email@example.com
-  password_digest: my_secret
+  password_digest: <%= BCrypt::Password.create(TEST_PASSWORD) %>
 

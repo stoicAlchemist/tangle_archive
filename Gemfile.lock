@@ -1,3 +1,11 @@
+GIT
+  remote: https://github.com/thoughtbot/shoulda-matchers.git
+  revision: 4b160bd19ecca7f97d7ac22dccd5fde9b0da5a9f
+  branch: rails-5
+  specs:
+    shoulda-matchers (3.1.2)
+      activesupport (>= 4.2.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +55,7 @@ GEM
     arel (9.0.0)
     autoprefixer-rails (9.1.3)
       execjs
+    backports (3.11.4)
     bcrypt (3.1.12)
     bindex (0.5.0)
     bootstrap (4.1.3)
@@ -76,11 +85,49 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     crass (1.0.4)
+<<<<<<< HEAD
     erubi (1.7.1)
     execjs (2.7.0)
     ffi (1.9.25)
     font-awesome-rails (4.7.0.4)
       railties (>= 3.2, < 6.0)
+=======
+    cucumber (3.1.2)
+      builder (>= 2.1.2)
+      cucumber-core (~> 3.2.0)
+      cucumber-expressions (~> 6.0.1)
+      cucumber-wire (~> 0.0.1)
+      diff-lcs (~> 1.3)
+      gherkin (~> 5.1.0)
+      multi_json (>= 1.7.5, < 2.0)
+      multi_test (>= 0.1.2)
+    cucumber-core (3.2.1)
+      backports (>= 3.8.0)
+      cucumber-tag_expressions (~> 1.1.0)
+      gherkin (~> 5.0)
+    cucumber-expressions (6.0.1)
+    cucumber-rails (1.6.0)
+      capybara (>= 1.1.2, < 4)
+      cucumber (>= 3.0.2, < 4)
+      mime-types (>= 1.17, < 4)
+      nokogiri (~> 1.8)
+      railties (>= 4, < 6)
+    cucumber-tag_expressions (1.1.1)
+    cucumber-wire (0.0.1)
+    database_cleaner (1.7.0)
+    diff-lcs (1.3)
+    erubi (1.7.1)
+    execjs (2.7.0)
+    factory_bot (4.11.1)
+      activesupport (>= 3.0.0)
+    factory_bot_rails (4.11.1)
+      factory_bot (~> 4.11.1)
+      railties (>= 3.0.0)
+    ffi (1.9.25)
+    font-awesome-rails (4.7.0.4)
+      railties (>= 3.2, < 6.0)
+    gherkin (5.1.0)
+>>>>>>> gitlab/master
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     i18n (1.1.0)
@@ -104,11 +151,21 @@ GEM
     marcel (0.3.2)
       mimemagic (~> 0.3.2)
     method_source (0.9.0)
+<<<<<<< HEAD
+=======
+    mime-types (3.2.2)
+      mime-types-data (~> 3.2015)
+    mime-types-data (3.2018.0812)
+>>>>>>> gitlab/master
     mimemagic (0.3.2)
     mini_mime (1.0.1)
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     multi_json (1.13.1)
+<<<<<<< HEAD
+=======
+    multi_test (0.1.2)
+>>>>>>> gitlab/master
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
@@ -132,6 +189,10 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.2.1)
       sprockets-rails (>= 2.0.0)
+    rails-controller-testing (1.0.2)
+      actionpack (~> 5.x, >= 5.0.1)
+      actionview (~> 5.x, >= 5.0.1)
+      activesupport (~> 5.x)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -206,6 +267,12 @@ DEPENDENCIES
   byebug
   capybara (~> 2.13)
   coffee-rails (~> 4.2)
+<<<<<<< HEAD
+=======
+  cucumber-rails
+  database_cleaner
+  factory_bot_rails
+>>>>>>> gitlab/master
   font-awesome-rails
   jbuilder (~> 2.5)
   jquery-rails
@@ -213,8 +280,13 @@ DEPENDENCIES
   pg (~> 0.18)
   puma (~> 3.7)
   rails (~> 5.2.1)
+<<<<<<< HEAD
+=======
+  rails-controller-testing
+>>>>>>> gitlab/master
   sass-rails (~> 5.0)
   selenium-webdriver
+  shoulda-matchers!
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)

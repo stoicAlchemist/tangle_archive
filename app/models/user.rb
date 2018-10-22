@@ -8,9 +8,9 @@ class User < ApplicationRecord
   before_save :lowcase_properties
   before_destroy :unlink_user
 
-
+  # Validations
   validates_presence_of :email, :username, :password_digest
-
+  validates :password, presence: true, length: { minimum: 6 }
   has_secure_password
 
   private
