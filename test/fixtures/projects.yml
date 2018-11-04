@@ -4,8 +4,14 @@ one:
   name: MyString
   description: MyText
   goal: MyText
+  project_type: one
+  creator: user1
+  domain: one
 
 two:
   name: MyString
   description: MyText
   goal: MyText
+  project_type: two
+  creator: user2
+  domain: one

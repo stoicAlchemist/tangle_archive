@@ -1,4 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
+  get '/login', to: 'sessions#new'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :people
   resources :users
   resources :project_types
@@ -14,7 +20,7 @@ Rails.application.routes.draw do
 
   resources :tasks, concerns: :commentable
   resources :domains, concerns: :commentable
-  get '/', to: "landing#index", as: 'root'
+  get '/', to: 'landing#index', as: 'root'
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

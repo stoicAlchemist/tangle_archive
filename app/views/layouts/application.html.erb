@@ -11,6 +11,24 @@
   <body>
 
     <%= render partial: 'shared/header' %>
+
+    <% unless flash.nil? %>
+      <% flash.keys.each do |type| %>
+        <div id='notice-holder' class='container-fluid'>
+          <div class='row'>
+            <div class='col-md-10 col-md-offset-1'>
+              <div id="notice" class='alert alert-<%= type %> show fade' data-dismiss='alert' role='alert'>
+                <%= flash[type] %>
+                <button class='close' aria-label='close' data-dismiss="alert" >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+
     <% unless notice.nil? %>
       <div id='notice-holder' class='container-fluid'>
         <div class='row'>
@@ -25,6 +43,8 @@
         </div>
       </div>
     <% end %>
+
   <%= yield %>
+
   </body>
 </html>

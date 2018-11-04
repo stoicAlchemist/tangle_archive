@@ -1,3 +1,59 @@
 // Place all the styles related to the landing controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.domain-info-group
+  display: block
+  +size(6.5em)
+  position: absolute
+  top: 30%
+  left: 30%
+  transform: translate(-30%, -30%) ease-out
+  transition: all 1s ease-out 0.1s
+
+
+.domain-name
+  opacity: 0
+
+.domain-circle
+  +border-radius(50%)
+  +size(1.6em)
+  font-size: 4em
+  transition: box-shadow 1.1s ease-in-out 0.1s
+  transform: scale(1)
+  transition: all .1s ease-in-out 0.1s
+
+.domain-circle:hover
+  cursor: pointer
+  transform: scale(1.1)
+  transition: all .2s ease 0.1s
+
+// The magic number 8 is the "maximum Domains that a normal persona can have"
+// according to me, I have not researched this number
+@for $dom from 1 through 9
+  .domain-cluster
+    .domain-info-group:nth-child(#{$dom})
+      @if $dom == 1
+        transform: translate(0)
+      @else if $dom == 2
+        transform: translate(-10em, 0em)
+      @else if $dom == 3
+        transform: translate(10em, 0em)
+      @else if $dom == 4
+        transform: translate(0em, -10em)
+      @else if $dom == 5
+        transform: translate(0em, 10em)
+      @else if $dom == 6
+        transform: translate(-7.5em, -7.5em)
+      @else if $dom == 7
+        transform: translate(7.5em, -7.5em)
+      @else if $dom == 8
+        transform: translate(7.5em, 7.5em)
+      @else if $dom == 9
+        transform: translate(-7.5em, 7.5em)
+      transition: all .5s ease 0.2s * $dom
+      .domain-name
+        opacity: 1
+        transition: opacity 1s ease-in-out
+      .domain-circle
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3)

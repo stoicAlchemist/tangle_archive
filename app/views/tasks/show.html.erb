@@ -1,3 +1,6 @@
+<% content_for :javascript_includes do %>
+  include javascript, it's all loaded on the application.js file
+<% end %>
 <H1>
 
   <% unless @task.project.nil? %>
@@ -23,24 +26,20 @@
       </div>
     </div>
 <% end %>
+
 <div class='card card-description stack-child-index1'>
   <div class='card-body'>
     <h4 class='card-title'>Description</h4>
 
-    <div class='card-status btn-group'>
-      <button class="btn btn-sm btn-<%= @task.status.bootstrap_color %>">
+    <div class='card-status btn-group btn-group-sm' role='group'>
+      <button class="btn dropdown-toggle btn-sm btn-<%= @task.status.bootstrap_color %>"
+        data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' id='StatusToggle'>
         <%= @task.status.name %>
       </button>
-      <button type="button"
-              class="btn btn-sm btn-<%= @task.status.bootstrap_color %>
-            dropdown-toggle dropdown-toggle-split"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <span class="sr-only">Toggle Dropdown</span>
-      </button>
-      <div class="dropdown-menu">
+      <div class="dropdown-menu" aria-labelledby='StatusToggle'>
         <% Status.all.each do |s| %>
           <% next if s == @task.status %>
-          <button class="dropdown-item new-status" data-toggle='modal'
+          <button class="dropdown-item new-status btn-sm" data-toggle='modal'
                   data-target="#statusChangeModal" value='<%= s.id%>'
                   data-bootstrap='<%= s.bootstrap_color %>'>
             <%= s.name %>
@@ -54,12 +53,14 @@
       <%= @task.description %>
     </p>
   </div>
-  <div class='card-controlls' data-toggle='tooltip'
-    data-placement='bottom' title='Edit'>
 
-    <%= link_to  fa_icon('edit'), edit_task_path(@task),
-      class: 'pull-right text-muted' %>
+  <div class='card-controlls badge-primary pull-right' title='Edit'>
+    <%= link_to  fa_icon('edit'), edit_task_path(@task), class: 'pull-right' %>
+    <%= link_to  '+', edit_task_path(@task), class: 'badge-inverse',
+      data: {toggle: 'modal', target: '#newTaskModal'} %>
   </div>
+  <%= new_task_modal project: @task.project_id, parent: @task %>
+
 </div>
 <% unless @task.parent.nil? %> </div> <% end %>
 
@@ -80,4 +81,4 @@
   <%end%>
 <% end %>
 </div>
-<%= commentable_form @task %>
+<%= render 'shared/commentable_form', commentable: @task %>

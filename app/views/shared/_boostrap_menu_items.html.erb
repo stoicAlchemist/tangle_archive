@@ -1,0 +1,7 @@
+<ul class='navbar-nav mr-auto'>
+  <% items.each do |i| %>
+    <li class='nav-item'>
+      <%= link_to i[:name], i[:path], class: "nav-link #{check_active(i)}" %>
+    </li>
+  <% end %>
+</ul>

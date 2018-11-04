@@ -75,7 +75,8 @@ class ProjectsController < ApplicationController
         :goal,
         :domain_id,
         :icon,
-        :project_type_id
+        :project_type_id,
+        :creator_id
       )
     end
 end

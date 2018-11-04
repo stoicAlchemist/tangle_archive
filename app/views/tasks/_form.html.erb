@@ -24,7 +24,7 @@
 
   <div class='row'>
     <div class="form-group col">
-      <%= form.label :priority, id: 'priority_label' %>
+      <%= form.label :"priority #{task.priority}", id: 'priority_label' %>
       <%= form.range_field :priority, id: :task_priority, min: 0, max: 9,
         class: 'form-control form-control-range' %>
     </div>
@@ -44,18 +44,22 @@
 
   </div>
   <% if local_assigns.fetch(:parent, nil).nil? %>
-    Here should go a Parent Task search utility
+    <%= form.label :parent %>
+    <% parent = nil %>
   <% else %>
-    <%= form.hidden_field :parent_id, id: :task_parent, value: parent.id %>
+    <% parent = parent.id %>
   <% end %>
 
-  <% if controller.controller_name.include? 'tasks' %>
+  <%= form.hidden_field :parent_id, id: :task_parent, value: parent  %>
+
+  <% if controller.controller_name.include?('tasks') and
+      local_assigns.fetch(:parent, nil).nil? %>
     <div class="actions">
       <%= form.submit class: 'btn btn-primary' %>
     </div>
   <% end %>
 
   <% unless local_assigns.fetch(:project, nil).nil? %>
-    <%= form.hidden_field :project_id, id: :task_project, value: project.id %>
+    <%= form.hidden_field :project_id, id: :task_project, value: project%>
   <% end %>
 <% end %>
