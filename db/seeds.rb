@@ -50,12 +50,12 @@ Project.create [
 User.create [
   {
     username: 'anonymous',
-    email: 'nobody@example.com',
+    email: 'nobody_AT_example.com',
     password_digest: 'stub'
   },
   {
     username: 'admintangle',
-    email: 'tangle@example.com',
+    email: 'tangle_AT_example.com',
     secret: 'stub'
   }
 ]
