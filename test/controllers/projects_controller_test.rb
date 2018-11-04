@@ -1,9 +1,11 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class ProjectsControllerTest < ActionDispatch::IntegrationTest
   setup do
     @project = projects(:one)
-    @user    = users(:user1)
+    @user = users(:user1)
 
     post login_path, params: {
       session: {
@@ -11,24 +13,23 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
         password: TEST_PASSWORD
       }
     }
-
   end
 
   def teardown
     delete logout_path
   end
 
-  test "should get index" do
+  test 'should get index' do
     get projects_url
     assert_response :success
   end
 
-  test "should get new" do
+  test 'should get new' do
     get new_project_url
     assert_response :success
   end
 
-  test "should create project" do
+  test 'should create project' do
     assert_difference('Project.count') do
       post projects_url, params: {
         project: {
@@ -45,22 +46,28 @@ class ProjectsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to project_url(Project.last)
   end
 
-  test "should show project" do
+  test 'should show project' do
     get project_url(@project)
     assert_response :success
   end
 
-  test "should get edit" do
+  test 'should get edit' do
     get edit_project_url(@project)
     assert_response :success
   end
 
-  test "should update project" do
-    patch project_url(@project), params: { project: { description: @project.description, goal: @project.goal, name: @project.name } }
+  test 'should update project' do
+    patch project_url(@project), params: {
+      project: {
+        description: @project.description,
+        goal: @project.goal,
+        name: @project.name
+      }
+    }
     assert_redirected_to project_url(@project)
   end
 
-  test "should destroy project" do
+  test 'should destroy project' do
     assert_difference('Project.count', -1) do
       delete project_url(@project)
     end

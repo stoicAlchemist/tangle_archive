@@ -1,0 +1,34 @@
+<section name='comments' class='comment-stack'>
+  <h4>Comments</h4>
+  <table class='table table-compact'>
+    <thead>
+      <tr scope='col'></tr>
+      <tr scope='col'></tr>
+      <tr scope='col'></tr>
+    </thead>
+    <tbody>
+      <% commentable.comments.each do |c| %>
+        <tr scope='row'>
+          <td class='col-1 comment-user-info'>
+            <%= icon_link 'user', c.creator %>
+            <div class='bottom-username text-muted'>
+              <%= c.creator.username %>
+            </div>
+          </td>
+          <td>
+            <div class='update-date font-weight-light text-secondary'>
+              <%= c.updated_at %>
+            </div>
+            <%= c.content %>
+          </td>
+          <td>
+            Actions (for later)
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= render 'comments/form', commentable: commentable %>
+
+</section>

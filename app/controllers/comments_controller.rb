@@ -1,12 +1,14 @@
+# frozen_string_literal: true
+
+# All commentable models should use this controller to interact with comments
 class CommentsController < ApplicationController
   before_action :set_commentable
-  before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_comment, only: %i[edit update destroy]
 
   # POST /comments
   # POST /comments.json
   def create
     @comment = @commentable.comments.new comment_params
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to @comment.commentable, notice: 'Comment was successfully created.' }

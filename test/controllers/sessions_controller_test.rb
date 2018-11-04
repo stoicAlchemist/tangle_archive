@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class SessionsControllerTest < ActionDispatch::IntegrationTest
-
   setup do
     @user = users(:user1)
 
@@ -11,15 +12,13 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
         password: TEST_PASSWORD
       }
     }
-
   end
 
   def teardown
     delete logout_path
   end
 
-  test "should get new" do
-
+  test 'should get new' do
     get login_path
     assert_response :success
 
@@ -29,10 +28,9 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_select 'label', 'Password'
     assert_select 'input[id=session_password]'
     assert_select 'input[type=submit][value="Log In"]'
-
   end
 
-  test "should create session" do
+  test 'should create session' do
     post login_path, params: {
       session: {
         email: @user.email,
@@ -44,7 +42,7 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal @user.id, session[:user_id]
   end
 
-  test "should not create a session" do
+  test 'should not create a session' do
     post login_path, params: {
       session: {
         email: @user.email,
@@ -52,7 +50,6 @@ class SessionsControllerTest < ActionDispatch::IntegrationTest
       }
     }
 
-    assert_select 'div.alert', /^Invalid User\/Password combination/
+    assert_select 'div.alert', %r{^Invalid User/Password combination}
   end
-
 end

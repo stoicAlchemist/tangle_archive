@@ -1,12 +1,10 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class LandingControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
   setup do
-
-    @user    = users(:user1)
+    @user = users(:user1)
 
     post login_path, params: {
       session: {
@@ -14,7 +12,6 @@ class LandingControllerTest < ActionDispatch::IntegrationTest
         password: TEST_PASSWORD
       }
     }
-
   end
 
   def teardown
