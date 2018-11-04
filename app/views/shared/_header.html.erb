@@ -11,7 +11,7 @@
         </li>
       </ul>
     <% else %>
-      <%= ul_linked_bootstrap_menu class: 'mr-auto', items: menu_items %>
+      <%= render 'shared/boostrap_menu_items', items: menu_items %>
       <div class='dropdown'>
         <button class="nav-link dropdown-toggle btn btn-dark btn-sm"
                 data-toggle="dropdown" href="#" role="button" aria-haspopup="true"

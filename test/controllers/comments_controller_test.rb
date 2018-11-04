@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'test_helper'
 
 class CommentsControllerTest < ActionDispatch::IntegrationTest
@@ -15,20 +17,19 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
         password: TEST_PASSWORD
       }
     }
-
   end
 
   def teardown
     delete logout_path
   end
 
-  test "should create a task comment" do
+  test 'should create a task comment' do
     assert_difference('Comment.count') do
       post task_comments_url(@task.id), params: {
         comment: {
           content: @comment.content,
           flagged: @comment.flagged,
-          hidden:  @comment.hidden,
+          hidden: @comment.hidden,
           creator_id: @comment.creator.id
         }
       }
@@ -37,8 +38,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to task_url(@task)
   end
 
-  test "should update task comment" do
-
+  test 'should update task comment' do
     patch task_comment_url(@task, @comment), params: {
       comment: {
         content: @comment.content,
@@ -50,7 +50,7 @@ class CommentsControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to task_url(@task)
   end
 
-  test "should destroy comment" do
+  test 'should destroy comment' do
     assert_difference('Comment.count', -1) do
       delete comment_url(@comment)
     end

@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+# General application controller, please only add stuff here that needs to be
+# used system wide
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   include SessionsHelper
@@ -5,9 +9,6 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
 
   def authenticate
-    unless logged_in?
-      redirect_to login_path
-    end
+    redirect_to(login_path) unless logged_in?
   end
-
 end

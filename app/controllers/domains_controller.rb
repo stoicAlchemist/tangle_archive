@@ -1,5 +1,10 @@
+# frozen_string_literal: true
+
+# Not much can be done for now in Domains, just keep it clean
 class DomainsController < ApplicationController
-  before_action :set_domain, only: [:show, :edit, :update, :destroy]
+  before_action :set_domain, only: %i[show edit update destroy]
+  SUCCESS = 'domain was successfully '
+  UE = :unprocessable_entity
 
   # GET /domains
   # GET /domains.json
@@ -19,8 +24,7 @@ class DomainsController < ApplicationController
   end
 
   # GET /domains/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /domains
   # POST /domains.json
@@ -29,11 +33,11 @@ class DomainsController < ApplicationController
 
     respond_to do |format|
       if @domain.save
-        format.html { redirect_to @domain, notice: 'domain was successfully created.' }
+        format.html { redirect_to @domain, notice: SUCCESS + 'created.' }
         format.json { render :show, status: :created, location: @domain }
       else
         format.html { render :new }
-        format.json { render json: @domain.errors, status: :unprocessable_entity }
+        format.json { render json: @domain.errors, status: UE }
       end
     end
   end
@@ -43,11 +47,11 @@ class DomainsController < ApplicationController
   def update
     respond_to do |format|
       if @domain.update(domain_params)
-        format.html { redirect_to @domain, notice: 'domain was successfully updated.' }
+        format.html { redirect_to @domain, notice: SUCCESS + 'updated.' }
         format.json { render :show, status: :ok, location: @domain }
       else
         format.html { render :edit }
-        format.json { render json: @domain.errors, status: :unprocessable_entity }
+        format.json { render json: @domain.errors, status: UE }
       end
     end
   end

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
+# Any action needed from the landing page
 class LandingController < ApplicationController
   before_action :set_landing, only: [:index]
-  def index
-  end
+
+  def index; end
 
   private
 
@@ -19,4 +22,3 @@ class LandingController < ApplicationController
     )
   end
 end
-
